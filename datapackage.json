@@ -1,0 +1,51 @@
+{
+  "name": "us-farmers-markets-by-state-2026",
+  "title": "US Farmers Market Statistics 2026",
+  "description": "State-by-state statistics for US farmers markets, CSAs, and farm stands — per-state counts plus SNAP/EBT acceptance and certified-organic share — derived from the USDA AMS Local Food Portal and refreshed 2026.",
+  "homepage": "https://harvestlymarkets.com/farmers-market-statistics/",
+  "licenses": [
+    {
+      "name": "CC-BY-4.0",
+      "title": "Creative Commons Attribution 4.0",
+      "path": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "sources": [
+    {
+      "title": "USDA AMS Local Food Portal",
+      "path": "https://www.usdalocalfoodportal.com/"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Harvestly Markets",
+      "path": "https://harvestlymarkets.com/",
+      "role": "author"
+    }
+  ],
+  "keywords": ["farmers markets", "local food", "SNAP", "EBT", "organic", "USDA", "agriculture", "CSA"],
+  "resources": [
+    {
+      "name": "us-farmers-markets-by-state-2026",
+      "path": "us-farmers-markets-by-state-2026.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          { "name": "state_name", "type": "string", "title": "State name" },
+          { "name": "state_abbr", "type": "string", "title": "State abbreviation" },
+          { "name": "farmers_markets", "type": "integer", "title": "Number of farmers markets" },
+          { "name": "csa_programs", "type": "integer", "title": "Number of CSA programs" },
+          { "name": "farm_stands", "type": "integer", "title": "Number of farm stands" },
+          { "name": "snap_ebt_markets", "type": "integer", "title": "Markets accepting SNAP/EBT" },
+          { "name": "snap_ebt_pct", "type": "number", "title": "Percent of markets accepting SNAP/EBT" },
+          { "name": "organic_vendor_markets", "type": "integer", "title": "Markets with certified-organic vendors" },
+          { "name": "organic_pct", "type": "number", "title": "Percent of markets with certified-organic vendors" },
+          { "name": "markets_with_website", "type": "integer", "title": "Markets with a working website" },
+          { "name": "website_pct", "type": "number", "title": "Percent of markets with a working website" }
+        ]
+      }
+    }
+  ]
+}
