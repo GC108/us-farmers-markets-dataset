@@ -1,7 +1,8 @@
 {
   "name": "us-farmers-markets-by-state-2026",
   "title": "US Farmers Market Statistics 2026",
-  "description": "State-by-state statistics for US farmers markets, CSAs, and farm stands — per-state counts plus SNAP/EBT acceptance and certified-organic share — derived from the USDA AMS Local Food Portal and refreshed 2026.",
+  "version": "1.1.0",
+  "description": "State-by-state statistics for US farmers markets, CSAs, and farm stands — per-state counts plus SNAP/EBT acceptance, certified-organic share, and website coverage — derived from the USDA AMS Local Food Portal and refreshed 2026. v1.1 (2026-07-07): website-coverage correction — a USDA live-API state-filter bug had left 9 states without enrichment data; per-state website_pct is now accurate (national ~50%).",
   "homepage": "https://harvestlymarkets.com/farmers-market-statistics/",
   "licenses": [
     {
