@@ -41,4 +41,4 @@ Derived from the USDA AMS Local Food Portal (public data). Published under **CC 
 reuse, share, and adapt with attribution.
 
 > Attribution: Harvestly Markets — US Farmers Market Statistics 2026 (CC BY 4.0), derived from USDA AMS
-> Local Food Portal. https://harvestlymarkets.com/farmersmarkets-statistics/
+> Local Food Portal. https://harvestlymarkets.com/farmers-market-statistics/
