@@ -1,8 +1,8 @@
 {
   "name": "us-farmers-markets-by-state-2026",
   "title": "US Farmers Market Statistics 2026",
-  "version": "1.1.0",
-  "description": "State-by-state statistics for US farmers markets, CSAs, and farm stands — per-state counts plus SNAP/EBT acceptance, certified-organic share, and website coverage — derived from the USDA AMS Local Food Portal and refreshed 2026. v1.1 (2026-07-07): website-coverage correction — a USDA live-API state-filter bug had left 9 states without enrichment data; per-state website_pct is now accurate (national ~50%).",
+  "version": "1.2.0",
+  "description": "State-by-state statistics for US farmers markets, CSAs, and farm stands \u2014 per-state counts plus SNAP/EBT acceptance, certified-organic share, and website coverage \u2014 derived from the USDA AMS Local Food Portal and refreshed 2026. v1.1 (2026-07-07): website-coverage correction \u2014 a USDA live-API state-filter bug had left 9 states without enrichment data; per-state website_pct is now accurate (national ~50%). v1.2 (2026-07-14): adds the RECORD-LEVEL dataset \u2014 all 8,863 deduplicated markets (name, location, coordinates, website, season, SNAP/organic and other attributes) as CSV + JSON. Record-level files exclude scraped third-party content and personal contact names/emails.",
   "homepage": "https://harvestlymarkets.com/farmers-market-statistics/",
   "licenses": [
     {
@@ -24,7 +24,16 @@
       "role": "author"
     }
   ],
-  "keywords": ["farmers markets", "local food", "SNAP", "EBT", "organic", "USDA", "agriculture", "CSA"],
+  "keywords": [
+    "farmers markets",
+    "local food",
+    "SNAP",
+    "EBT",
+    "organic",
+    "USDA",
+    "agriculture",
+    "CSA"
+  ],
   "resources": [
     {
       "name": "us-farmers-markets-by-state-2026",
@@ -34,19 +43,207 @@
       "encoding": "utf-8",
       "schema": {
         "fields": [
-          { "name": "state_name", "type": "string", "title": "State name" },
-          { "name": "state_abbr", "type": "string", "title": "State abbreviation" },
-          { "name": "farmers_markets", "type": "integer", "title": "Number of farmers markets" },
-          { "name": "csa_programs", "type": "integer", "title": "Number of CSA programs" },
-          { "name": "farm_stands", "type": "integer", "title": "Number of farm stands" },
-          { "name": "snap_ebt_markets", "type": "integer", "title": "Markets accepting SNAP/EBT" },
-          { "name": "snap_ebt_pct", "type": "number", "title": "Percent of markets accepting SNAP/EBT" },
-          { "name": "organic_vendor_markets", "type": "integer", "title": "Markets with certified-organic vendors" },
-          { "name": "organic_pct", "type": "number", "title": "Percent of markets with certified-organic vendors" },
-          { "name": "markets_with_website", "type": "integer", "title": "Markets with a working website" },
-          { "name": "website_pct", "type": "number", "title": "Percent of markets with a working website" }
+          {
+            "name": "state_name",
+            "type": "string",
+            "title": "State name"
+          },
+          {
+            "name": "state_abbr",
+            "type": "string",
+            "title": "State abbreviation"
+          },
+          {
+            "name": "farmers_markets",
+            "type": "integer",
+            "title": "Number of farmers markets"
+          },
+          {
+            "name": "csa_programs",
+            "type": "integer",
+            "title": "Number of CSA programs"
+          },
+          {
+            "name": "farm_stands",
+            "type": "integer",
+            "title": "Number of farm stands"
+          },
+          {
+            "name": "snap_ebt_markets",
+            "type": "integer",
+            "title": "Markets accepting SNAP/EBT"
+          },
+          {
+            "name": "snap_ebt_pct",
+            "type": "number",
+            "title": "Percent of markets accepting SNAP/EBT"
+          },
+          {
+            "name": "organic_vendor_markets",
+            "type": "integer",
+            "title": "Markets with certified-organic vendors"
+          },
+          {
+            "name": "organic_pct",
+            "type": "number",
+            "title": "Percent of markets with certified-organic vendors"
+          },
+          {
+            "name": "markets_with_website",
+            "type": "integer",
+            "title": "Markets with a working website"
+          },
+          {
+            "name": "website_pct",
+            "type": "number",
+            "title": "Percent of markets with a working website"
+          }
         ]
       }
+    },
+    {
+      "name": "us-farmers-markets-2026",
+      "title": "US Farmers Markets 2026 \u2014 record-level (8,863 markets)",
+      "path": "us-farmers-markets-2026.csv",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8",
+      "schema": {
+        "fields": [
+          {
+            "name": "listing_id",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "street",
+            "type": "string"
+          },
+          {
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "name": "state_name",
+            "type": "string"
+          },
+          {
+            "name": "zip",
+            "type": "string"
+          },
+          {
+            "name": "lat",
+            "type": "number"
+          },
+          {
+            "name": "lng",
+            "type": "number"
+          },
+          {
+            "name": "phone",
+            "type": "string"
+          },
+          {
+            "name": "website",
+            "type": "string"
+          },
+          {
+            "name": "facebook",
+            "type": "string"
+          },
+          {
+            "name": "instagram",
+            "type": "string"
+          },
+          {
+            "name": "twitter",
+            "type": "string"
+          },
+          {
+            "name": "youtube",
+            "type": "string"
+          },
+          {
+            "name": "pinterest",
+            "type": "string"
+          },
+          {
+            "name": "season",
+            "type": "string"
+          },
+          {
+            "name": "products",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "updated",
+            "type": "string"
+          },
+          {
+            "name": "accepts_snap",
+            "type": "boolean"
+          },
+          {
+            "name": "accepts_ebt",
+            "type": "boolean"
+          },
+          {
+            "name": "organic_certified",
+            "type": "boolean"
+          },
+          {
+            "name": "organic_practices",
+            "type": "boolean"
+          },
+          {
+            "name": "csa_vendor_present",
+            "type": "boolean"
+          },
+          {
+            "name": "indoor_market",
+            "type": "boolean"
+          },
+          {
+            "name": "online_order_available",
+            "type": "boolean"
+          },
+          {
+            "name": "delivery_available",
+            "type": "boolean"
+          },
+          {
+            "name": "payment_cash",
+            "type": "boolean"
+          },
+          {
+            "name": "payment_credit_debit",
+            "type": "boolean"
+          },
+          {
+            "name": "live_enriched",
+            "type": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "name": "us-farmers-markets-2026-json",
+      "title": "US Farmers Markets 2026 \u2014 record-level (JSON, with metadata header)",
+      "path": "us-farmers-markets-2026.json",
+      "format": "json",
+      "mediatype": "application/json",
+      "encoding": "utf-8"
     }
   ]
 }
