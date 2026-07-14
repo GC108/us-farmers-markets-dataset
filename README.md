@@ -1,44 +1,50 @@
-# US Farmers Market Statistics 2026
+# US Farmers Markets 2026 — record-level dataset + state statistics
 
-State-by-state statistics for farmers markets across the United States — per-state counts plus
-SNAP/EBT acceptance and certified-organic share — compiled from the
+The cleaned, deduplicated US farmers-market dataset — **8,863 markets, record-level**, plus
+state-by-state statistics — compiled from the
 [USDA AMS Local Food Portal](https://www.usdalocalfoodportal.com/) and refreshed 2026.
 
-**Canonical landing page (methodology, license, and the full interactive table):**
-https://harvestlymarkets.com/farmers-market-statistics/
+**Canonical landing page (downloads, methodology, license):**
+https://harvestlymarkets.com/data-sources/
 
 ## What's inside
 
-- Per-state counts of farmers markets, CSA programs, and farm stands across all 50 states, DC, and territories (**8,863** farmers markets nationwide, post-dedup canonical count)
-- Share of markets accepting **SNAP/EBT** benefits (~10% nationally)
-- Share of markets with **certified-organic** vendors (~12%)
-- Share of markets with a **working website** (~50%)
+- **`us-farmers-markets-2026.csv` / `.json` — the record-level dataset (NEW in v1.2):** all
+  **8,863** deduplicated farmers markets with name, address, city/state/ZIP, coordinates,
+  phone, website, social links, season, products, description, and attribute flags
+  (SNAP/EBT, certified-organic, CSA vendor, indoor, delivery, payments). The JSON variant
+  wraps the same records in a metadata header (license, DOI, generation date, count).
+- **`us-farmers-markets-by-state-2026.csv`** — one row per state: counts of farmers markets,
+  CSA programs, and farm stands, plus SNAP/EBT (~10% nationally), certified-organic (~12%),
+  and working-website (~50%) shares.
+- **`datapackage.json`** — Frictionless Data Package descriptor + field schemas.
 
-**Version note — v1.1 (2026-07-07):** website-coverage correction. A USDA live-API state-filter
-bug had left 9 states without enrichment data, understating `markets_with_website`; per-state
-`website_pct` is now accurate (national ~50%).
+## What "cleaned" means
 
-## Files
+The raw USDA feed is rough: ~40-char truncated names, stale records, a `state=` filter that
+substring-matches state *names* (querying "WA" returns Delaware rows), and thousands of
+missing websites. This dataset is deduplicated to actual farmers markets (~270 merged
+entries that were single-farm stands, mobile food pantries, or retail grocers are removed),
+website coverage is backfilled from the live API + state sources to ~50%, and dead website
+URLs are stripped.
 
-- `us-farmers-markets-by-state-2026.csv` — one row per state with the metrics above
-- `datapackage.json` — Frictionless Data Package descriptor + field schema
+**Record-level field policy:** scraped third-party content (descriptions/images from market
+websites) and personal contact names/emails are excluded — only USDA-derived fields, our
+website/social backfill, and attribute flags ship in the redistributable.
 
-## Fields
+## Versions
 
-| Field | Description |
-|-------|-------------|
-| `state_name` / `state_abbr` | State name and two-letter abbreviation |
-| `farmers_markets` | Number of farmers markets |
-| `csa_programs` | Number of CSA programs |
-| `farm_stands` | Number of farm stands |
-| `snap_ebt_markets` / `snap_ebt_pct` | Markets accepting SNAP/EBT, count and percent |
-| `organic_vendor_markets` / `organic_pct` | Markets with certified-organic vendors, count and percent |
-| `markets_with_website` / `website_pct` | Markets with a working website, count and percent |
+- **v1.2 (2026-07-14):** record-level dataset added (CSV + JSON, 8,863 markets).
+- **v1.1 (2026-07-07):** website-coverage correction — a USDA live-API state-filter bug had
+  left 9 states without enrichment data, understating `markets_with_website`; per-state
+  `website_pct` is now accurate (national ~50%).
+- **v1.0:** initial state-level release.
 
 ## Source & license
 
 Derived from the USDA AMS Local Food Portal (public data). Published under **CC BY 4.0** — free to
-reuse, share, and adapt with attribution.
+reuse, share, and adapt with attribution. Archived, citable version:
+[DOI 10.5281/zenodo.21247900](https://doi.org/10.5281/zenodo.21247900).
 
-> Attribution: Harvestly Markets — US Farmers Market Statistics 2026 (CC BY 4.0), derived from USDA AMS
-> Local Food Portal. https://harvestlymarkets.com/farmers-market-statistics/
+> Attribution: Harvestly Markets — US Farmers Markets 2026 (CC BY 4.0), derived from USDA AMS
+> Local Food Portal. https://harvestlymarkets.com/data-sources/
